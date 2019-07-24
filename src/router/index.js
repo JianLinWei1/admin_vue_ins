@@ -101,21 +101,34 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/captureRecord',
+    path: '/capture',
     component: Layout,
     meta: { title: 'captureRecord', icon: 'workerRegister' },
     children: [
       {
         path: '/workerRecord',
-        component: () => import('@/views/workerManage/workerRecord'),
+        component: () => import('@/views/capture/workerRecord'),
         name: 'workerRecord',
         meta: { title: 'workerRecord' }
       },
       {
         path: '/stangerRecord',
-        component: () => import('@/views/workerManage/stangerRecord'),
+        component: () => import('@/views/capture/strangerRecord'),
         name: 'stranger',
         meta: { title: 'stranger' }
+      }
+    ]
+  },
+  {
+    path: '/systemDevice',
+    component: Layout,
+    meta: { title: 'systemDevice', icon: 'system' },
+    children: [
+      {
+        path: '/deviceManage',
+        component: () => import('@/views/device/device'),
+        name: 'deviceManage',
+        meta: { title: 'deviceManage' }
       }
     ]
   }

@@ -70,13 +70,15 @@ export default {
     workerManage: '工人管理',
     'workerRegister': '实名注册',
     'workerEdit': '实名管理',
-    'workerType': '工种管理',
+    'workerType': '部门管理',
     captureRecord: '抓拍记录',
     'workerRecord': '工人记录',
     'stranger': '陌生人记录',
     adminManage: '管理员管理',
     'roleManage': '角色管理',
-    'adminList': '管理员列表'
+    'adminList': '管理员列表',
+    systemDevice: '系统设备',
+    'deviceManage': '设备管理'
   },
   navbar: {
     logOut: '退出登录',

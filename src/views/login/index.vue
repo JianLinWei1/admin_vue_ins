@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <div class="login-container" :style="bgImg">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
       <div class="title-container">
         <h3 class="title">
@@ -64,6 +64,7 @@
 import { validUsername } from '@/utils/validate'
 import LangSelect from '@/components/LangSelect'
 import SocialSign from './socialsignin'
+import defaultImg from '@/assets/images/background.png'
 
 export default {
   name: 'Login',
@@ -95,7 +96,11 @@ export default {
       passwordType: 'password',
       loading: false,
       showDialog: false,
-      redirect: undefined
+      redirect: undefined,
+      bgImg: {
+        backgroundImage: 'url(' + defaultImg + ')'
+
+      }
     }
   },
   watch: {
@@ -188,6 +193,7 @@ export default {
 </style>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+
 $bg:#2d3a4b;
 $dark_gray:#889aa4;
 $light_gray:#eee;
@@ -197,7 +203,7 @@ $light_gray:#eee;
   width: 100%;
   background-color: #2e588e;
   overflow: hidden;
-  background-image: url('/src/assets/images/background.png');
+  // background-image: url('~@/assets/bak_images/background.png');
       background-repeat: no-repeat;
     background-size: 40%;
   .login-form {

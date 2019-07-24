@@ -75,7 +75,9 @@ export default {
     'stranger': 'Stranger Record',
     adminManage: 'Admin Manage',
     'roleManage': 'Role Manage',
-    'adminList': 'Admin List'
+    'adminList': 'Admin List',
+    systemDevice: 'System equipment',
+    'deviceManage': 'Equipment management'
   },
   navbar: {
     logOut: 'Log Out',

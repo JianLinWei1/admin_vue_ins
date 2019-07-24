@@ -54,7 +54,9 @@
         width="180"
       >
         <template slot-scope="scope">
-          <img :src=" '/api'+scope.row.idPhoto " alt="" style="width:100px">
+          <viewer>
+            <img :src=" '/api'+scope.row.idPhoto " alt="" style="width:100px">
+          </viewer>
         </template>
       </el-table-column>
       <el-table-column
@@ -62,7 +64,9 @@
         label="现场照片"
         width="180"
       >   <template slot-scope="scope">
-        <img :src=" '/api'+scope.row.visiblePhoto" alt="" style="width:150px">
+        <viewer>
+          <img :src=" '/api'+scope.row.visiblePhoto" alt="" style="width:150px">
+        </viewer>
       </template> </el-table-column>
       <el-table-column
         prop="upload"
@@ -71,7 +75,8 @@
       >
         <template slot-scope="scope">
           <div v-if="scope.row.upload === 1" style="color:#67C23A">上传成功</div>
-          <div v-else style="color:#F56C6C">上传失败</div>
+          <div v-if="scope.row.upload === 2" style="color:#67C23A">平台下发</div>
+          <div v-if="scope.row.upload === -1" style="color:#F56C6C">上传失败</div>
 
         </template>
       </el-table-column>

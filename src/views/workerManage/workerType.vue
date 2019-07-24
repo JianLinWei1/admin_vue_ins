@@ -1,15 +1,15 @@
 
 <template>
   <div class="app-container ">
-    <el-button type="primary" @click="dialogFormVisible = true">添加工种</el-button>
+    <el-button type="primary" @click="dialogFormVisible = true">添加部门</el-button>
     <el-button style="float:right" type="primary" icon="el-icon-refresh" @click="reload()">刷新</el-button>
 
-    <el-dialog title="添加工种" :visible.sync="dialogFormVisible" center="" @close="closeDialog()">
+    <el-dialog title="添加部门" :visible.sync="dialogFormVisible" center="" @close="closeDialog()">
       <el-form ref="form" :model="form" :rules="rules">
-        <el-form-item label="工种名称" :label-width="formLabelWidth" prop="workTypeName">
+        <el-form-item label="部门名称" :label-width="formLabelWidth" prop="workTypeName">
           <el-input v-model="form.workTypeName" />
         </el-form-item>
-        <el-form-item label="工种描述" :label-width="formLabelWidth" prop="workTypeDescription">
+        <el-form-item label="部门描述" :label-width="formLabelWidth" prop="workTypeDescription">
           <el-input v-model="form.workTypeDescription" type="textarea" />
         </el-form-item>
 
@@ -33,12 +33,12 @@
       />
       <el-table-column
         prop="workTypeName"
-        label="工种名称"
+        label="部门名称"
         width="180"
       />
       <el-table-column
         prop="workTypeDescription"
-        label="工种描述"
+        label="部门描述"
         width="200"
       />
       <el-table-column
@@ -65,12 +65,12 @@
       />
     </div>
 
-    <el-dialog title="编辑工种" :visible.sync="editType" center="" @close="closeDialog()">
+    <el-dialog title="编辑部门" :visible.sync="editType" center="" @close="closeDialog()">
       <el-form ref="form" :model="form" :rules="rules">
-        <el-form-item label="工种名称" :label-width="formLabelWidth" prop="workTypeName">
+        <el-form-item label="部门名称" :label-width="formLabelWidth" prop="workTypeName">
           <el-input v-model="form.workTypeName" />
         </el-form-item>
-        <el-form-item label="工种描述" :label-width="formLabelWidth" prop="workTypeDescription">
+        <el-form-item label="部门描述" :label-width="formLabelWidth" prop="workTypeDescription">
           <el-input v-model="form.workTypeDescription" type="textarea" />
         </el-form-item>
 
