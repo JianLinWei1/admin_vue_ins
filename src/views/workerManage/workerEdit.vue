@@ -55,7 +55,7 @@
       >
         <template slot-scope="scope">
           <viewer>
-            <img :src=" '/api'+scope.row.idPhoto " alt="" style="width:100px">
+            <img :src=" baseURL+scope.row.idPhoto " alt="" style="width:100px">
           </viewer>
         </template>
       </el-table-column>
@@ -65,7 +65,7 @@
         width="180"
       >   <template slot-scope="scope">
         <viewer>
-          <img :src=" '/api'+scope.row.visiblePhoto" alt="" style="width:150px">
+          <img :src=" baseURL+scope.row.visiblePhoto" alt="" style="width:150px">
         </viewer>
       </template> </el-table-column>
       <el-table-column
@@ -170,7 +170,8 @@ export default {
         value: 'name',
         label: '姓名'
       }],
-      isSearched: false
+      isSearched: false,
+      baseURL: process.env.BASE_API
     }
   },
   created: function() {
@@ -184,7 +185,7 @@ export default {
       this.editFrom.idCard = val.idCard
       this.editFrom.name = val.name
       this.editFrom.workTypeId = val.workTypeId
-      this.editFrom.visiblePhoto = '/api' + val.visiblePhoto
+      this.editFrom.visiblePhoto = this.baseURL + val.visiblePhoto
 
       getWorkTypesAll().then(res => {
         if (res.code === 0) {

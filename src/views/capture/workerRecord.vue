@@ -32,7 +32,7 @@
         <template slot-scope="scope">
           <el-popover trigger="hover" placement="top">
             <p>身份证号: {{ scope.row.idCard }}</p>
-            <p>民族: {{ scope.row.nation }}</p> <img style="float:right" :src="'api/'+scope.row.idPhoto">
+            <p>民族: {{ scope.row.nation }}</p> <img style="float:right" :src="baseUrl+scope.row.idPhoto">
             <p v-if=" scope.row.gender === 1">性别: 男 </p>
             <p v-else>性别: 女 </p>
             <p>生日: {{ scope.row.birthday }}</p>
@@ -56,7 +56,7 @@
       >
         <template slot-scope="scope">
           <viewer>
-            <img :src=" '/api'+scope.row.visiblePhoto " alt="" style="width:150px">
+            <img :src=" baseUrl+scope.row.visiblePhoto " alt="" style="width:150px">
           </viewer>
         </template>
       </el-table-column>
@@ -66,7 +66,7 @@
         width="180"
       >   <template slot-scope="scope">
         <viewer>
-          <img :src=" '/api'+scope.row.capturePhoto" alt="" style="width:150px">
+          <img :src=" baseUrl+scope.row.capturePhoto" alt="" style="width:150px">
         </viewer>
       </template> </el-table-column>
       <el-table-column
@@ -150,7 +150,8 @@ export default {
         value: 'name',
         label: '姓名'
       }],
-      isSearched: false
+      isSearched: false,
+      baseUrl: process.env.BASE_API
     }
   },
   created: function() {

@@ -15,7 +15,7 @@
 
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
-          <img src="src/assets/images/avatar.png" class="user-avatar">
+          <img :src="aImg" class="user-avatar">
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
@@ -41,6 +41,7 @@ import Hamburger from '@/components/Hamburger'
 import Screenfull from '@/components/Screenfull'
 
 import LangSelect from '@/components/LangSelect'
+import avatarimg from '@/assets/images/avatar.png'
 
 export default {
   components: {
@@ -48,6 +49,11 @@ export default {
     Hamburger,
     Screenfull,
     LangSelect
+  },
+  data() {
+    return {
+      aImg: avatarimg
+    }
   },
   computed: {
     ...mapGetters([
@@ -57,6 +63,7 @@ export default {
       'device'
     ])
   },
+
   methods: {
     toggleSideBar() {
       this.$store.dispatch('toggleSideBar')

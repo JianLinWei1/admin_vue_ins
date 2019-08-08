@@ -89,7 +89,7 @@ export const constantRoutes = [
         path: 'workerRegister',
         component: () => import('@/views/workerManage/workerRegister'),
         name: 'workerRegister',
-        meta: { title: 'workerRegister' }
+        meta: { title: 'workerRegister', noCache: false }
       }, {
         path: 'workerEdit',
         component: () => import('@/views/workerManage/workerEdit'),

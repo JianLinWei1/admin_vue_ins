@@ -27,7 +27,7 @@
         :label="$t('adminManage.face')"
       >
         <template slot-scope="scope">
-          <img :src=" '/api'+scope.row.faceImg" alt="" style="width:100px">
+          <img :src="baseURL+scope.row.faceImg" alt="" style="width:100px">
         </template>
       </el-table-column>
       <el-table-column
@@ -77,7 +77,8 @@ export default {
         userName: '',
         password: '',
         faceImg: ''
-      }
+      },
+      baseURL: process.env.BASE_API
     }
   },
   created: function() {

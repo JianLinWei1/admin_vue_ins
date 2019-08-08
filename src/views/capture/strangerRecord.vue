@@ -35,7 +35,7 @@
         width="180"
       >   <template slot-scope="scope">
         <viewer>
-          <img :src=" '/api'+scope.row.capturePhoto" alt="" style="width:150px">
+          <img :src="baseUrl+scope.row.capturePhoto" alt="" style="width:150px">
         </viewer>
       </template> </el-table-column>
       <el-table-column
@@ -109,7 +109,8 @@ export default {
         value: 'name',
         label: '姓名'
       }],
-      isSearched: false
+      isSearched: false,
+      baseUrl: process.env.BASE_API
     }
   },
   created: function() {

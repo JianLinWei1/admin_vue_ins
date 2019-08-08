@@ -23,13 +23,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import Img1 from '@/assets/images/1.png'
 
 export default {
   name: 'DashboardEditor',
   components: { },
   data() {
     return {
-      emptyGif: '../src/assets/images/1.png'
+      emptyGif: Img1
     }
   },
   computed: {

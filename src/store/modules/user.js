@@ -51,6 +51,7 @@ const user = {
       return new Promise((resolve, reject) => {
         loginByUsername(username, userInfo.password).then(response => {
           const data = response
+
           if (data.code !== 0) {
             Message({
               message: data.msg,
