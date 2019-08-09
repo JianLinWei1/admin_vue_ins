@@ -34,8 +34,8 @@
         :label="$t('adminManage.action')"
       >
         <template slot-scope="scope">
-          <el-button type="primary" icon="el-icon-edit" circle @click="editClick(scope.row)" />
-          <el-button type="danger" icon="el-icon-delete" circle @click="delClick(scope.row)" />
+          <el-button v-if="checkPermission(['admin:edit'])" type="primary" icon="el-icon-edit" circle @click="editClick(scope.row)" />
+          <el-button v-if="checkPermission(['admin:del'])" type="danger" icon="el-icon-delete" circle @click="delClick(scope.row)" />
 
         </template>
       </el-table-column>
@@ -59,6 +59,7 @@
 <script>
 import { getAdminList, editAdmin } from '@/api/admin'
 import EditAdmin from './editAdmin'
+import checkPermission from '@/utils/permission'
 export default {
   name: 'AdminList',
   components: { EditAdmin },
@@ -85,6 +86,7 @@ export default {
     this.getAdminList()
   },
   methods: {
+    checkPermission,
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`)
       this.pagination.limit = val

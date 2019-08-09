@@ -44,7 +44,18 @@ export const constantRoutes = [
     path: '/401',
     component: () => import('@/views/errorPage/401'),
     hidden: true
-  },
+  }
+
+]
+
+export default new Router({
+  // mode: 'history', // require service support
+  scrollBehavior: () => ({ y: 0 }),
+  routes: constantRoutes
+})
+
+export const asyncRoutes = [
+  { path: '*', redirect: '/404', hidden: true },
   {
     path: '',
     component: Layout,
@@ -61,40 +72,40 @@ export const constantRoutes = [
   {
     path: '/adminManage',
     component: Layout,
-    meta: { title: 'adminManage', icon: 'user' },
+    meta: { title: 'adminManage', icon: 'user', roles: ['admin:manage'] },
     children: [{
       path: 'roleManage',
       component: () => import('@/views/admin/roleManage'),
       name: 'roleManage',
-      meta: { title: 'roleManage' }
+      meta: { title: 'roleManage', roles: ['role:manage', 'role:edit', 'role:del'] }
     }, {
       path: 'adminList',
       component: () => import('@/views/admin/adminList'),
       name: 'adminList',
-      meta: { title: 'adminList' }
+      meta: { title: 'adminList', roles: ['admin:list', 'admin:edit', 'admin:del'] }
     }]
   },
   {
     path: '/workerManage',
     component: Layout,
-    meta: { title: 'workerManage', icon: 'worker' },
+    meta: { title: 'workerManage', icon: 'worker', roles: ['worker:manage'] },
     children: [
       {
         path: 'workerType',
         component: () => import('@/views/workerManage/workerType'),
         name: 'workerType',
-        meta: { title: 'workerType' }
+        meta: { title: 'workerType', roles: ['depart:manage', 'depart:edit', 'depart:del', 'depart:add'] }
       },
       {
         path: 'workerRegister',
         component: () => import('@/views/workerManage/workerRegister'),
         name: 'workerRegister',
-        meta: { title: 'workerRegister', noCache: false }
+        meta: { title: 'workerRegister', noCache: false, roles: ['real:register', 'ocr'] }
       }, {
         path: 'workerEdit',
         component: () => import('@/views/workerManage/workerEdit'),
         name: 'workerEdit',
-        meta: { title: 'workerEdit' }
+        meta: { title: 'workerEdit', roles: ['real:manage', 'real:edit', 'real:del'] }
 
       }
 
@@ -103,45 +114,33 @@ export const constantRoutes = [
   {
     path: '/capture',
     component: Layout,
-    meta: { title: 'captureRecord', icon: 'workerRegister' },
+    meta: { title: 'captureRecord', icon: 'workerRegister', roles: ['capture:record'] },
     children: [
       {
         path: '/workerRecord',
         component: () => import('@/views/capture/workerRecord'),
         name: 'workerRecord',
-        meta: { title: 'workerRecord' }
+        meta: { title: 'workerRecord', roles: ['woker:record', 'record:del'] }
       },
       {
         path: '/stangerRecord',
         component: () => import('@/views/capture/strangerRecord'),
         name: 'stranger',
-        meta: { title: 'stranger' }
+        meta: { title: 'stranger', roles: ['stranger:record', 'stranger:dl'] }
       }
     ]
   },
   {
     path: '/systemDevice',
     component: Layout,
-    meta: { title: 'systemDevice', icon: 'system' },
+    meta: { title: 'systemDevice', icon: 'system', roles: ['device:manage'] },
     children: [
       {
         path: '/deviceManage',
         component: () => import('@/views/device/device'),
         name: 'deviceManage',
-        meta: { title: 'deviceManage' }
+        meta: { title: 'deviceManage', roles: ['device:manage', 'device:del'] }
       }
     ]
   }
-
-]
-
-export default new Router({
-  // mode: 'history', // require service support
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
-})
-
-export const asyncRoutes = [
-
-  { path: '*', redirect: '/404', hidden: true }
 ]

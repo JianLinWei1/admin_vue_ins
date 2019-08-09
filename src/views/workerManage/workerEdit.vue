@@ -85,8 +85,8 @@
         label="操作"
       >
         <template slot-scope="scope">
-          <el-button size="small" @click="editClick(scope.row)">编辑</el-button>
-          <el-button type="danger" size="small" @click="delClick(scope.row,scope.$index)">删除</el-button>
+          <el-button v-if="checkPermission(['real:edit'])" size="small" @click="editClick(scope.row)">编辑</el-button>
+          <el-button v-if="checkPermission(['real:del'])" type="danger" size="small" @click="delClick(scope.row,scope.$index)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -141,6 +141,7 @@
 <script>
 import { getWorkerInfos, getWorkTypesAll, addWorkerInfo, getWorkerInfosReload, delWokerInfoByIdcard } from '@/api/worker'
 import { compressImg_bak2 } from '@/utils/compressImg'
+import checkPermission from '@/utils/permission'
 
 export default {
 
@@ -179,6 +180,7 @@ export default {
   },
   inject: ['reload'],
   methods: {
+    checkPermission,
     editClick(val) {
       this.dialogFormVisible = true
 

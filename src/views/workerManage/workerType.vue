@@ -1,7 +1,7 @@
 
 <template>
   <div class="app-container ">
-    <el-button type="primary" @click="dialogFormVisible = true">添加部门</el-button>
+    <el-button v-if="checkPermission(['depart:add'])" type="primary" @click="dialogFormVisible = true">添加部门</el-button>
     <el-button style="float:right" type="primary" icon="el-icon-refresh" @click="reload()">刷新</el-button>
 
     <el-dialog title="添加部门" :visible.sync="dialogFormVisible" center="" @close="closeDialog()">
@@ -46,8 +46,8 @@
         label="操作"
       >
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click="editClick(scope.row)">编辑</el-button>
-          <el-button type="text" size="small" @click="delClick(scope.row ,scope.$index)">删除</el-button>
+          <el-button v-if="checkPermission(['depart:edit'])" type="text" size="small" @click="editClick(scope.row)">编辑</el-button>
+          <el-button v-if="checkPermission(['depart:del'])" type="text" size="small" @click="delClick(scope.row ,scope.$index)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -86,6 +86,7 @@
 </template>
 <script>
 import { insertWorkType, getWorkTypes, delWorkType, updateWorkType } from '@/api/worker'
+import checkPermission from '@/utils/permission'
 
 export default {
 
@@ -123,6 +124,7 @@ export default {
   },
   inject: ['reload'],
   methods: {
+    checkPermission,
     editClick(val) {
       this.editType = true
       this.form.id = val.id

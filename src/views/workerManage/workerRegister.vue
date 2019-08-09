@@ -67,7 +67,7 @@
         <el-button @click="resetForm('registerForm')">重置</el-button>
         <el-button type="primary" icon="el-icon-camera" @click="takePhoto">拍照</el-button>
         <el-button type="primary" icon="el-icon-postcard" @click="getIdCard">读身份证卡</el-button>
-        <el-button type="primary" icon="el-icon-picture-outline" @click="ocrDialog">OCR身份证识别</el-button>
+        <el-button v-if="checkPermission(['ocr'])" type="primary" icon="el-icon-picture-outline" @click="ocrDialog">OCR身份证识别</el-button>
       </el-form-item>
     </el-form>
     <div class="img-class">
@@ -123,6 +123,7 @@ import { callCamera, closeCamera, photograph2 } from '@/utils/camrea'
 import { getWorkTypesAll, uploadIdCard, addWorkerInfo } from '@/api/worker'
 import { getIDCardInfo, initWs } from '@/utils/idCardInfo'
 import { compressImg_bak2 } from '@/utils/compressImg'
+import checkPermission from '@/utils/permission'
 
 export default {
   data() {
@@ -184,7 +185,7 @@ export default {
     }
   },
   methods: {
-
+    checkPermission,
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {

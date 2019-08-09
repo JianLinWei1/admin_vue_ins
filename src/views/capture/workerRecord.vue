@@ -106,7 +106,7 @@
         label="操作"
       >
         <template slot-scope="scope">
-          <el-button type="danger" size="small" @click="delClick(scope.row,scope.$index)">删除</el-button>
+          <el-button v-if="checkPermission(['stranger:dl'])" type="danger" size="small" @click="delClick(scope.row,scope.$index)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -129,6 +129,7 @@
 <script>
 import { getWorkerCaptureInfos, getWorkerCaptureInfosReload, delWorkerCaptureInfosByUUID } from '@/api/capture'
 import { getStatus } from '@/api/device'
+import checkPermission from '@/utils/permission'
 
 export default {
 
@@ -159,7 +160,7 @@ export default {
   },
   inject: ['reload'],
   methods: {
-
+    checkPermission,
     searchClick() {
       if (!this.isSearched) {
         Object.assign(this.$data.pageNation, this.$options.data().pageNation)

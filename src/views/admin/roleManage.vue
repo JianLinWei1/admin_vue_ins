@@ -30,8 +30,8 @@
         :label="$t('roleManage.action')"
       >
         <template slot-scope="scope">
-          <el-button type="primary" icon="el-icon-edit" circle @click="editClick(scope.row)" />
-          <el-button type="danger" icon="el-icon-delete" circle @click="delClick(scope.row)" />
+          <el-button v-if="checkPermission(['role:edit'])" type="primary" icon="el-icon-edit" circle @click="editClick(scope.row)" />
+          <el-button v-if="checkPermission(['role:del'])" type="danger" icon="el-icon-delete" circle @click="delClick(scope.row)" />
 
         </template>
       </el-table-column>
@@ -50,6 +50,7 @@
 </template>
 <script>
 import { getRoleList } from '@/api/role'
+import checkPermission from '@/utils/permission'
 
 export default {
 
@@ -68,6 +69,7 @@ export default {
     this.getRoleList()
   },
   methods: {
+    checkPermission,
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`)
       this.pagination.limit = val
